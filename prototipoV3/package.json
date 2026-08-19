@@ -1,0 +1,16 @@
+{
+  "name": "prototipov3",
+  "version": "3.0.0",
+  "description": "Protótipo V3 do SELic - Sistema de documentos de estágio do IFRJ Campus Pinheiral",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "docxtemplater": "^3.68.7",
+    "express": "^5.2.1",
+    "pizzip": "^3.2.0"
+  }
+}

@@ -1,0 +1,587 @@
+/* ============================================================
+   SELic - Protótipo V3
+   ============================================================
+   >>> PADRÃO DE CORES <<<
+   Edite apenas este bloco :root para mudar o tema do site.
+   As cores estão em formato HEX e são usadas em todo o layout.
+   ============================================================ */
+:root {
+  /* Cor principal (IFRJ verde) */
+  --cor-primaria: #1a6b3c;
+  /* Cor primária mais clara (hover) */
+  --cor-primaria-clara: #2e8b57;
+  /* Fundo claro usando a cor principal (destaques, badges) */
+  --cor-primaria-suave: #e8f4ed;
+  /* Cor de destaque (links, botões secundários) */
+  --cor-destaque: #0d6efd;
+  /* Cor de perigo / campos obrigatórios */
+  --cor-perigo: #dc2626;
+
+  /* --- Fundos e textos --- */
+  --fundo-pagina: #f4f6f8;
+  --fundo-card: #ffffff;
+  --texto-principal: #111827;
+  --texto-secundario: #4b5563;
+  --texto-suave: #6b7280;
+  --borda: #d1d5db;
+  --borda-suave: #e5e7eb;
+
+  /* --- Cabeçalho --- */
+  --header-fundo: #ffffff;
+  --header-texto: #111827;
+
+  /* --- Botão principal --- */
+  --btn-primario-fundo: #1a6b3c;
+  --btn-primario-texto: #ffffff;
+
+  /* --- Botão secundário --- */
+  --btn-secundario-fundo: #6c757d;
+  --btn-secundario-texto: #ffffff;
+
+  /* --- Outros --- */
+  --raio: 8px;
+  --raio-lg: 12px;
+  --sombra: 0 1px 3px rgba(0,0,0,0.08), 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--fundo-pagina);
+  color: var(--texto-principal);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  min-height: 100vh;
+  padding-bottom: 3rem;
+}
+
+/* ============================================================
+   Top navigation (steps)
+   ============================================================ */
+.steps-nav {
+  background: var(--fundo-card);
+  border-bottom: 1px solid var(--borda-suave);
+  box-shadow: var(--sombra);
+  margin-bottom: 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.steps-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.5rem;
+  flex-wrap: wrap;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 50rem;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--texto-secundario);
+  background: transparent;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.step-item:hover {
+  background: var(--cor-primaria-suave);
+  color: var(--cor-primaria);
+}
+.step-item.active {
+  background: var(--cor-primaria);
+  color: #fff;
+}
+.step-item.active .step-num {
+  background: rgba(255,255,255,0.2);
+}
+.step-item.done {
+  color: var(--cor-primaria);
+  border-color: var(--cor-primaria-suave);
+}
+.step-num {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+  background: var(--cor-primaria-suave);
+  color: var(--cor-primaria);
+  flex-shrink: 0;
+}
+.step-item.active .step-num {
+  color: #fff;
+}
+.step-item.done .step-num {
+  background: var(--cor-primaria);
+  color: #fff;
+}
+.step-divider {
+  width: 20px;
+  height: 1.5px;
+  background: var(--borda);
+  flex-shrink: 0;
+}
+.step-divider.done {
+  background: var(--cor-primaria);
+}
+
+/* ============================================================
+   Cabecalho principal
+   ============================================================ */
+.page-header {
+  background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-primaria-clara) 100%);
+  color: #fff;
+  padding: 2.5rem 1.5rem 2rem;
+  text-align: center;
+  margin-bottom: 0;
+}
+.page-header .selic-title {
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+}
+.page-header .selic-subtitle {
+  font-size: 14px;
+  opacity: 0.85;
+  margin-top: 0.25rem;
+}
+.page-header .badge-proto {
+  background: rgba(255,255,255,0.2);
+  border-radius: 50rem;
+  padding: 4px 14px;
+  font-size: 12px;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+/* ============================================================
+   Cards
+   ============================================================ */
+.card {
+  border: 1px solid var(--borda-suave);
+  border-radius: var(--raio-lg);
+  box-shadow: var(--sombra);
+  background: var(--fundo-card);
+}
+.card-header-custom {
+  background: var(--cor-primaria-suave);
+  border-bottom: 1px solid var(--cor-primaria-clara);
+  border-radius: var(--raio-lg) var(--raio-lg) 0 0 !important;
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  color: var(--cor-primaria);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cor-primaria);
+  margin: 1.5rem 0 0.75rem;
+  padding-bottom: 6px;
+  border-bottom: 2px solid var(--cor-primaria-suave);
+}
+.section-title:first-child {
+  margin-top: 0;
+}
+
+/* ============================================================
+   Formulários
+   ============================================================ */
+label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+label .req {
+  color: var(--cor-perigo);
+}
+.form-control, .form-select {
+  border-radius: var(--raio);
+  border-color: var(--borda);
+  font-size: 14px;
+  padding: 8px 12px;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--cor-primaria);
+  box-shadow: 0 0 0 0.2rem rgba(26,107,60,0.12);
+}
+.form-hint {
+  font-size: 12px;
+  color: var(--texto-suave);
+  margin-top: 3px;
+}
+
+/* ============================================================
+   Botões
+   ============================================================ */
+.btn {
+  border-radius: var(--raio);
+  font-size: 14px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-primary {
+  background: var(--btn-primario-fundo);
+  border-color: var(--btn-primario-fundo);
+  color: var(--btn-primario-texto);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--cor-primaria-clara);
+  border-color: var(--cor-primaria-clara);
+  color: #fff;
+}
+.btn-secondary {
+  background: var(--btn-secundario-fundo);
+  border-color: var(--btn-secundario-fundo);
+  color: var(--btn-secundario-texto);
+}
+.btn-outline-primary {
+  border-color: var(--cor-primaria);
+  color: var(--cor-primaria);
+}
+.btn-outline-primary:hover {
+  background: var(--cor-primaria);
+  color: #fff;
+}
+
+/* ============================================================
+   Cards de documentos (Tela 2)
+   ============================================================ */
+.doc-card {
+  border: 1.5px solid var(--borda-suave);
+  border-radius: var(--raio-lg);
+  padding: 1.25rem;
+  background: var(--fundo-card);
+  transition: all 0.15s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.doc-card:hover {
+  border-color: var(--cor-primaria-clara);
+  box-shadow: 0 0 0 3px rgba(46,139,87,0.12);
+  transform: translateY(-2px);
+}
+.doc-card .doc-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--raio);
+  background: var(--cor-primaria-suave);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.75rem;
+  color: var(--cor-primaria);
+  font-size: 20px;
+}
+.doc-card .doc-num {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--cor-primaria-clara);
+  margin-bottom: 3px;
+}
+.doc-card .doc-name {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--texto-principal);
+  line-height: 1.35;
+}
+.doc-card .doc-desc {
+  font-size: 12.5px;
+  color: var(--texto-suave);
+  margin-top: 4px;
+  line-height: 1.45;
+}
+.doc-card .doc-actions {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-end;
+}
+.doc-card .doc-actions .btn {
+  font-size: 12.5px;
+  padding: 5px 12px;
+}
+
+/* ============================================================
+   Tela 3 - Formulário do documento
+   ============================================================ */
+.form-panel {
+  display: none;
+}
+.form-panel.visible {
+  display: block;
+}
+.form-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--cor-primaria-suave);
+  color: var(--cor-primaria);
+  border-radius: 50rem;
+  padding: 5px 14px;
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+.form-badge svg {
+  width: 14px;
+  height: 14px;
+}
+.form-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--borda-suave);
+}
+
+/* Caixa dos dados do aluno (Tela 1) resumido na Tela 3 */
+.aluno-summary {
+  background: var(--cor-primaria-suave);
+  border-radius: var(--raio-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.aluno-summary .title {
+  font-weight: 600;
+  color: var(--cor-primaria);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.aluno-summary .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 4px 16px;
+  font-size: 13px;
+}
+.aluno-summary .grid b {
+  font-weight: 600;
+  color: var(--texto-secundario);
+}
+
+/* ============================================================
+   Tabela de registros (Doc 06)
+   ============================================================ */
+.reg-linha {
+  display: grid;
+  grid-template-columns: 34px 1fr 1fr 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+.reg-linha .reg-num {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--texto-suave);
+  text-align: center;
+}
+
+/* ============================================================
+   Modal de pré-visualização
+   ============================================================ */
+.preview-page {
+  background: #fff;
+  width: 100%;
+  min-height: 600px;
+  padding: 30px 35px;
+  font-family: "Times New Roman", serif;
+  font-size: 11pt;
+  line-height: 1.5;
+  color: #000;
+  border: 1px solid var(--borda-suave);
+}
+.preview-page .inst-header {
+  text-align: center;
+  margin-bottom: 1.5em;
+}
+.preview-page .inst-header .nome-inst {
+  font-size: 10pt;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.preview-page .inst-header .subtitulo {
+  font-size: 9pt;
+}
+.preview-page hr {
+  border: none;
+  border-top: 1.5px solid #000;
+  margin: 0.6em 0;
+}
+.preview-page .doc-titulo {
+  font-size: 13pt;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 1em 0;
+}
+.preview-page .campo-linha {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 0.5em;
+  flex-wrap: wrap;
+}
+.preview-page .campo-label {
+  font-weight: bold;
+  white-space: nowrap;
+  font-size: 10pt;
+}
+.preview-page .campo-valor {
+  border-bottom: 1px solid #000;
+  flex: 1;
+  min-width: 80px;
+  padding: 0 4px 1px;
+  font-size: 10pt;
+}
+.preview-page .linha-assinatura {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin-top: 2em;
+  flex-wrap: wrap;
+}
+.preview-page .assinatura-bloco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 160px;
+}
+.preview-page .assinatura-linha {
+  width: 100%;
+  border-top: 1px solid #000;
+  margin-bottom: 4px;
+}
+.preview-page .assinatura-texto {
+  font-size: 9pt;
+  text-align: center;
+}
+.preview-page .secao-titulo {
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 0.3em;
+  font-size: 11pt;
+}
+.preview-page .obs-box {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  min-height: 40px;
+  font-size: 10pt;
+  margin-top: 0.3em;
+}
+.preview-page table.freq-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9pt;
+  margin-top: 0.5em;
+}
+.preview-page table.freq-table th,
+.preview-page table.freq-table td {
+  border: 1px solid #000;
+  padding: 3px 5px;
+  text-align: center;
+}
+.preview-page table.freq-table th {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+/* ============================================================
+   Aviso de protótipo
+   ============================================================ */
+.proto-alert {
+  background: #fff7e6;
+  border: 1px solid #f0b429;
+  color: #8a6d1a;
+  border-radius: var(--raio);
+  padding: 0.75rem 1rem;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+.proto-alert svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+/* ============================================================
+   Esconder/-mostrar telas (steps)
+   ============================================================ */
+.step-screen {
+  display: none;
+}
+.step-screen.active {
+  display: block;
+}
+
+/* ============================================================
+   Responsividade
+   ============================================================ */
+@media (max-width: 576px) {
+  .steps-inner {
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.7rem 0.75rem;
+  }
+  .step-item {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+  .step-divider {
+    display: none;
+  }
+  .page-header {
+    padding: 1.75rem 1rem 1.5rem;
+  }
+  .page-header .selic-title {
+    font-size: 1.5rem;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .preview-page, .preview-page * {
+    visibility: visible;
+  }
+  .preview-page {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none;
+  }
+}
